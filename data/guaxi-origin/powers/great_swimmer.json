@@ -1,0 +1,21 @@
+{
+    "type": "origins:multiple",
+
+    "speed": {
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.75
+        }
+    },
+
+    "lung": {
+        "type": "origins:attribute",
+        "modifier": {
+            "attribute": "additionalentityattributes:generic.lung_capacity",
+            "operation": "addition",
+            "value": 20,
+            "name": "Increase lung capacity"
+        }
+    }
+}

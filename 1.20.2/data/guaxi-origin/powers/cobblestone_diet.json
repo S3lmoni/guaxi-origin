@@ -1,0 +1,48 @@
+{
+    "type": "origins:multiple",
+
+    "toggle": {
+        "type": "origins:toggle",
+        "active_by_default": false,
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "mainhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "tag": "guaxi-origin:cobblestones"
+                }
+            }
+        }
+    },
+
+    "eating": {
+        "type": "origins:edible_item",
+        "condition": {
+            "type": "origins:power_active",
+            "power": "*:*_toggle"
+        },
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "guaxi-origin:cobblestones"
+            }
+        },
+        "food_component": {
+            "hunger": 2,
+            "saturation": 2,
+            "always_edible": true
+        },
+        "entity_action": {
+            "type": "origins:damage",
+            "amount": 4,
+            "damage_type": "guaxi-origin:stomachache"
+        },
+        "use_action": "eat"
+    },
+
+    "hidden": true
+}

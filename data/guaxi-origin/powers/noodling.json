@@ -1,0 +1,233 @@
+{
+    "type": "origins:multiple",
+
+    "clear_timer": {
+        "type": "origins:cooldown",
+        "hud_render": {
+            "should_render": false
+        },
+        "cooldown": 60
+    },
+
+    "hold": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 2,
+                    "block": true,
+                    "entity": false,
+                    "shape_type": "visual",
+                    "fluid_handling": "any",
+                    "block_condition": {
+                        "type": "origins:block",
+                        "block": "minecraft:water"
+                    }
+                },
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:empty"
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_held",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:block_collision",
+                    "block_condition": {
+                        "type": "origins:block",
+                        "block": "minecraft:air"
+                    },
+                    "offset_x": 0,
+                    "offset_y": 0,
+                    "offset_z": 0
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 2,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "any",
+                    "hit_action": {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:entity.fishing_bobber.splash",
+                        "volume": 0.5,
+                        "category": "block"
+                    },
+                    "command_at_hit": "function guaxi-origin:sim_noodling",
+                    "command_step": 1,
+                    "command_along_ray_only_on_hit": true
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_delay",
+                    "change": 1,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_clear_timer"
+                }
+            ]
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "cooldown": 20
+    },
+
+    "delay": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 15,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_held"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_delay",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "title @s actionbar {\"translate\":\"power.guaxi-origin.noodling.title.success\",\"color\":\"green\"}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "loot give @s fish minecraft:gameplay/fishing ~ ~ ~"
+                            }
+                        ]
+                    },
+                    "fail_action": {
+                        "type": "origins:chance",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"translate\":\"power.guaxi-origin.noodling.title.fail\",\"color\":\"red\"}"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "loot give @s fish minecraft:gameplay/fishing/junk ~ ~ ~"
+                                }
+                            ]
+                        },
+                        "fail_action": {
+                            "type": "origins:execute_command",
+                            "command": "title @s actionbar {\"translate\":\"power.guaxi-origin.noodling.title.nothing\",\"color\":\"gray\"}"
+                        },
+                        "chance": 0.6
+                    },
+                    "chance": 0.3
+                }
+            ]
+        }
+    },
+
+    "clear": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_delay",
+            "change": 0,
+            "operation": "set"
+        },
+        "interval": 20,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_clear_timer",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+
+    "held": {
+        "type": "origins:cooldown",
+        "hud_render": {
+            "should_render": false
+        },
+        "cooldown": 200
+    },
+
+    "held_warn": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.use"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 2,
+                    "block": true,
+                    "entity": false,
+                    "shape_type": "visual",
+                    "fluid_handling": "any",
+                    "block_condition": {
+                        "type": "origins:block",
+                        "block": "minecraft:water"
+                    }
+                },
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:empty"
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_held",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "title @s actionbar {\"translate\":\"power.guaxi-origin.noodling.cooldown\",\"color\":\"gray\"}"
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "cooldown": 20
+    }
+}

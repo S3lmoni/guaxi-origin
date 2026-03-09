@@ -1,0 +1,42 @@
+{
+    "origin.guaxi-origin.guaxi.name": "Guaxi",
+    "origin.guaxi-origin.guaxi.description": "Criaturas pequenas conhecidas por sua naturaza boba e caótica. Inspiradas nos Guaxis da §5comunidade de Lightwuz.",
+
+    "power.guaxi-origin.resilient_stomach.name": "Estômago Resiliente",
+    "power.guaxi-origin.resilient_stomach.description": "Você tem um estômago mais resistente que os dos humanos, permitindo comer comida estragada sem sofrer efeitos colaterais.",
+
+    "power.guaxi-origin.cobblestone_diet.title.kris": "[Kris teria orgulho]",
+
+    "power.guaxi-origin.fast_metabolism.name": "Rápido Metabolismo",
+    "power.guaxi-origin.fast_metabolism.description": "Você precisa comer mais para se manter nutrido.",
+
+    "power.guaxi-origin.fishing_luck.name": "Sorte na Pesca",
+    "power.guaxi-origin.fishing_luck.description": "Pescando com uma vara de pescar concede o efeito de Sorte.",
+
+    "power.guaxi-origin.great_swimmer.name": "Grande Nadador",
+    "power.guaxi-origin.great_swimmer.description": "Você se move mais rápido debaixo d'água.",
+
+    "power.guaxi-origin.light_body.name": "Corpo Leve",
+    "power.guaxi-origin.light_body.description": "Seu pequeno corpo dificulta o uso de armaduras e ferramentas pesadas.",
+
+    "power.guaxi-origin.limited_climbing.name": "Escalada Limitada",
+    "power.guaxi-origin.limited_climbing.description": "Você consegue escalar blocos que não possuem uma superfície lisa.",
+
+    "power.guaxi-origin.momentum.name": "Momentum",
+    "power.guaxi-origin.momentum.description": "Ao correr, você aumenta gradualmente sua velocidade. Após acumular o suficiente, seu dano de ataque começa a aumentar. O impulso não aumenta debaixo d'água e é perdido ao atacar outra entidade.",
+    "power.guaxi-origin.momentum.buff": "[2x Dano de Ataque]",
+
+    "power.guaxi-origin.noodling.name": "Pesca com Mãos Nuas",
+    "power.guaxi-origin.noodling.description": "Enquanto estiver agachado e olhando para água, você poderá pescar com as mãos nuas.",
+
+    "power.guaxi-origin.noodling.title.success": "Sorte!",
+    "power.guaxi-origin.noodling.title.fail": "Obteve tralha",
+    "power.guaxi-origin.noodling.title.nothing": "Nada",
+    "power.guaxi-origin.noodling.cooldown": "Em Recarga",
+
+    "power.guaxi-origin.small_size.name": "Tamanho Pequeno",
+    "power.guaxi-origin.small_size.description": "Seu pequeno corpo lhe proporciona menos vida.",
+
+    "death.attack.stomachache": "%1$s comeu muito pedra",
+    "death.attack.stomachache.player": "%1$s comeu muito pedra"
+}

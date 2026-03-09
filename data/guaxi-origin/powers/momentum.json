@@ -1,0 +1,149 @@
+{
+    "type": "origins:multiple",
+
+    "toggle": {
+        "type": "origins:toggle",
+        "active_by_default": true,
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+
+    "speed": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 19,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_speed",
+                "comparison": ">",
+                "compare_to": 0
+            },
+            "should_render": true
+        }
+    },
+
+    "decelerate": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_speed",
+            "change": -3
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_speed",
+                    "comparison": ">=",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "interval": 2
+    },
+
+    "cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 40
+    },
+
+    "accelerate": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_speed",
+                    "change": 2
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_cooldown"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:swimming",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:sprinting"
+                },
+                {
+                    "type": "origins:creative_flying",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "*:*_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:light_body_speed_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "interval": 1
+    },
+
+    "on_hit": {
+        "type": "origins:self_action_on_hit",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_speed",
+            "change": -40
+        },
+        "cooldown": 20
+    },
+
+    "movement_speed": {
+        "type": "origins:modify_attribute",
+        "attribute": "minecraft:generic.movement_speed",
+        "modifier": {
+            "operation": "add_base_early",
+            "resource": "*:momentum_speed",
+            "value": 0,
+            "modifier": {
+                "operation": "multiply_total_multiplicative",
+                "value": -0.999
+            }
+        }
+    },
+
+    "attack_damage": {
+        "type": "origins:modify_attribute",
+        "attribute": "minecraft:generic.attack_damage",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:momentum_speed",
+            "comparison": ">=",
+            "compare_to": 100
+        },
+        "modifier": {
+            "operation": "add_base_early",
+            "resource": "*:momentum_speed",
+            "value": 0,
+            "modifier": {
+                "operation": "multiply_total_multiplicative",
+                "value": -0.9925
+            }
+        }
+    }
+}

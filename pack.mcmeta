@@ -1,0 +1,23 @@
+{
+  "pack": {
+    "description": [
+      "An origin inspired by guaxis from the VTuber ",
+      {
+        "text": "Lightwuz",
+        "color": "dark_purple",
+        "bold": true
+      },
+      "."
+    ],
+    "pack_format": 15,
+    "supported_formats": [15,18]
+  },
+  "overlays": {
+    "entries": [
+      {
+        "directory": "1.20.2",
+        "formats": 18
+      }
+    ]
+  }
+}
