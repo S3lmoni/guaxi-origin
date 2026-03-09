@@ -12,7 +12,7 @@
     "speed": {
         "type": "origins:resource",
         "min": 0,
-        "max": 300,
+        "max": 200,
         "hud_render": {
             "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
             "bar_index": 19,
@@ -66,7 +66,7 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "*:*_speed",
-                    "change": 1
+                    "change": 2
                 },
                 {
                     "type": "origins:trigger_cooldown",
@@ -91,6 +91,12 @@
                 {
                     "type": "origins:power_active",
                     "power": "*:*_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:light_body_speed_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
                 }
             ]
         },
@@ -136,7 +142,7 @@
             "value": 0,
             "modifier": {
                 "operation": "multiply_total_multiplicative",
-                "value": -0.996
+                "value": -0.9925
             }
         }
     }
