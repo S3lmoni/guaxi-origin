@@ -1,0 +1,180 @@
+{
+    "type": "origins:multiple",
+
+    "toggle": {
+        "type": "origins:toggle",
+        "active_by_default": false,
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "mainhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "tag": "guaxi-origin:cobblestones"
+                }
+            }
+        }
+    },
+
+    "eating": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "cooldown": 10,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:feed",
+                                "food": 2,
+                                "saturation": 2.0
+                            },
+                            {
+                                "type": "origins:damage",
+                                "amount": 4,
+                                "damage_type": "guaxi-origin:stomachache"
+                            },
+                            {
+                                "type": "origins:if_else",
+                                "condition": {
+                                    "type": "origins:gamemode",
+                                    "gamemode": "creative",
+                                    "inverted": true
+                                },
+                                "if_action": {
+                                    "type": "origins:equipped_item_action",
+                                    "equipment_slot": "mainhand",
+                                    "action": {
+                                        "type": "origins:consume",
+                                        "amount": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "permission_level": 4,
+                                "command": "playsound minecraft:entity.player.burp player @s ~ ~ ~ 1 1"
+                            }
+                        ]
+                    },
+                    "ticks": 32
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "function guaxi-origin:sim_cobblestone_eating"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                            "type": "origins:ingredient",
+                            "ingredient": {
+                                "item": "minecraft:mossy_cobblestone"
+                            }
+                        }
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "title @s actionbar {\"translate\":\"power.guaxi-origin.cobblestone_diet.title.kris\",\"color\":\"green\"}"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "permission_level": 4,
+                        "command": "function guaxi-origin:sim_cobblestone_eating"
+                    },
+                    "ticks": 4
+                },
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "permission_level": 4,
+                        "command": "function guaxi-origin:sim_cobblestone_eating"
+                    },
+                    "ticks": 8
+                },
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "permission_level": 4,
+                        "command": "function guaxi-origin:sim_cobblestone_eating"
+                    },
+                    "ticks": 12
+                },
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "permission_level": 4,
+                        "command": "function guaxi-origin:sim_cobblestone_eating"
+                    },
+                    "ticks": 16
+                },
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "permission_level": 4,
+                        "command": "function guaxi-origin:sim_cobblestone_eating"
+                    },
+                    "ticks": 20
+                },
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "permission_level": 4,
+                        "command": "function guaxi-origin:sim_cobblestone_eating"
+                    },
+                    "ticks": 24
+                },
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "permission_level": 4,
+                        "command": "function guaxi-origin:sim_cobblestone_eating"
+                    },
+                    "ticks": 28
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "tag": "guaxi-origin:cobblestones"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "*:*_toggle"
+                }
+            ]
+        }
+    },
+
+    "hidden": true
+}

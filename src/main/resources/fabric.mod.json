@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "guaxi-origin",
+	"version": "${version}",
+	"name": "Guaxi Origin",
+	"description": "An origin inspired by guaxis from the VTuber Lightwuz.",
+	"authors": [
+		"S3lmoni"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/data-packs/guaxi-origin",
+		"sources": "https://github.com/S3lmoni/guaxi-origin",
+		"issues": "https://github.com/S3lmoni/guaxi-origin/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/guaxi-origin/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.s3lmoni.guaxiorigin.GuaxiOrigin"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"origins":  ">=1.10.2",
+		"pehkui": "*"
+	}
+}

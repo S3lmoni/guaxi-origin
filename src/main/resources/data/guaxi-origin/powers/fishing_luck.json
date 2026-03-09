@@ -1,0 +1,23 @@
+{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "origins:apply_effect",
+        "effect": {
+            "effect": "minecraft:luck",
+            "duration": 40,
+            "amplifier": 0,
+            "show_particles": false
+        }
+    },
+    "condition": {
+        "type": "origins:equipped_item",
+        "equipment_slot": "mainhand",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:fishing_rod"
+            }
+        }
+    },
+    "tick_rate": 20
+}

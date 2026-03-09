@@ -1,0 +1,42 @@
+{
+    "origin.guaxi-origin.guaxi.name": "Guaxi",
+    "origin.guaxi-origin.guaxi.description": "Small creatures known for their chaotic and silly nature. Inspired by the Guaxis from §5Lightwuz's community.",
+
+    "power.guaxi-origin.resilient_stomach.name": "Resilient Stomach",
+    "power.guaxi-origin.resilient_stomach.description": "You have a stronger stomach than humans, allowing you to eat rotten food without side effects.",
+
+    "power.guaxi-origin.cobblestone_diet.title.kris": "[Kris would be proud]",
+
+    "power.guaxi-origin.fast_metabolism.name": "Faster Metabolism",
+    "power.guaxi-origin.fast_metabolism.description": "You need to eat more to keep yourself nourished.",
+
+    "power.guaxi-origin.fishing_luck.name": "Fishing Luck",
+    "power.guaxi-origin.fishing_luck.description": "Fishing with a rod grants you the Luck effect.",
+
+    "power.guaxi-origin.great_swimmer.name": "Great Swimmer",
+    "power.guaxi-origin.great_swimmer.description": "You move faster while swimming.",
+
+    "power.guaxi-origin.light_body.name": "Light Body",
+    "power.guaxi-origin.light_body.description": "Your small body makes difficult to use heavy armor and tools.",
+
+    "power.guaxi-origin.limited_climbing.name": "Limited Climbing",
+    "power.guaxi-origin.limited_climbing.description": "You can climb blocks that do not have a smooth surface.",
+
+    "power.guaxi-origin.momentum.name": "Momentum",
+    "power.guaxi-origin.momentum.description": "You gradually become faster while sprinting. After building enough momentum, your attack damage starts increasing. Momentum does not build while swimming, and is lost when you hit an entity.",
+    "power.guaxi-origin.momentum.buff": "[2x Attack Damage]",
+
+    "power.guaxi-origin.noodling.name": "Noodling",
+    "power.guaxi-origin.noodling.description": "While sneaking and looking at the water, you can fish with your bare hands.",
+    "power.guaxi-origin.noodling.cooldown": "On Cooldown",
+
+    "power.guaxi-origin.noodling.title.success": "Lucky!",
+    "power.guaxi-origin.noodling.title.fail": "Got junk",
+    "power.guaxi-origin.noodling.title.nothing": "Nothing",
+
+    "power.guaxi-origin.small_size.name": "Small Size",
+    "power.guaxi-origin.small_size.description": "Your small body gives you less health.",
+
+    "death.attack.stomachache": "%1$s ate too many cobblestone",
+    "death.attack.stomachache.player": "%1$s ate too many cobblestone"
+}

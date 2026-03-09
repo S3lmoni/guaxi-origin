@@ -1,0 +1,21 @@
+{
+    "powers": [
+        "guaxi-origin:momentum",
+        "guaxi-origin:limited_climbing",
+        "guaxi-origin:noodling",
+        "guaxi-origin:fishing_luck",
+        "guaxi-origin:great_swimmer",
+        "origins:cat_vision", 
+        "guaxi-origin:resilient_stomach",
+        "guaxi-origin:cobblestone_diet",
+        "guaxi-origin:small_size",
+        "guaxi-origin:fast_metabolism",
+        "guaxi-origin:light_body",
+        "guaxi-origin:guaxi_on_death",
+
+        "guaxi-origin:pehkui/small_size_pehkui"
+    ],
+    "icon": "minecraft:purple_dye",
+    "order": 1,
+    "impact": 2
+}
