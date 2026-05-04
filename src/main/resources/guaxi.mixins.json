@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "net.s3lmoni.guaxiorigin.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "FoodDataMixin",
+    "ItemMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin"
+  ],
+  "client": [
+    "ItemInHandRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
