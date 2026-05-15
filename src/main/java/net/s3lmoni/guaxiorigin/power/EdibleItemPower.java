@@ -34,8 +34,6 @@ public class EdibleItemPower extends Power implements Prioritized<EdibleItemPowe
     private final SoundEvent useSound;
     private final int priority;
 
-
-
     public EdibleItemPower(PowerType<?> type, LivingEntity entity,
                            Consumer<Entity> entityAction,
                            Consumer<Tuple<Level, ItemStack>> itemAction,
@@ -86,13 +84,7 @@ public class EdibleItemPower extends Power implements Prioritized<EdibleItemPowe
     }
 
     public SoundEvent getUseSound() {
-        if(useSound != null) {
-            return useSound;
-        }
-
-        return useAction.equals(UseAnim.EAT) ?
-                SoundEvents.GENERIC_EAT
-                : SoundEvents.GENERIC_DRINK;
+        return useSound;
     }
 
     public void executeEntityAction() {
@@ -122,7 +114,7 @@ public class EdibleItemPower extends Power implements Prioritized<EdibleItemPowe
                         .add("result_item_action", ApoliDataTypes.ITEM_ACTION, null)
                         .add("food_component", SerializableDataTypes.FOOD_COMPONENT)
                         .add("use_action", SerializableDataType.enumValue(UseAnim.class), UseAnim.EAT)
-                        .add("sound", SerializableDataTypes.SOUND_EVENT, null)
+                        .add("sound", SerializableDataTypes.SOUND_EVENT, SoundEvents.GENERIC_EAT)
                         .add("priority", SerializableDataTypes.INT, 0),
                 data -> (powerType, livingEntity) -> new EdibleItemPower(
                         powerType,

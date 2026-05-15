@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 public class GuaxiOrigin implements ModInitializer {
 	public static final String MOD_ID = "guaxi-origin";
 
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
     public static ResourceLocation identifier(String id) {
         return new ResourceLocation(MOD_ID, id);
     }
@@ -17,5 +19,6 @@ public class GuaxiOrigin implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		GuaxiPowers.register();
+		LOGGER.info("Hello from GuaxiOrigin");
 	}
 }

@@ -31,9 +31,6 @@ public class LivingEntityMixin {
     protected ItemStack useItem;
 
     @Unique
-    private final FoodProperties FOODPROP_FALLBACK = new FoodProperties.Builder().build(); /* to avoid returning null */
-
-    @Unique
     private LivingEntity getSelf() {
         return (LivingEntity) (Object) this;
     }
@@ -56,7 +53,9 @@ public class LivingEntityMixin {
 
     @Unique
     private int getCustomConsumeTime(int original, ItemStack itemStack) {
-        return getEdibleItemPower(itemStack).map(EdibleItemPower::getConsumeTime).orElse(original);
+        return getEdibleItemPower(itemStack)
+                .map(EdibleItemPower::getConsumeTime)
+                .orElse(original);
     }
 
     // [EdibleItemPower] triggerItemUseEffects() -> Custom Use Action
@@ -92,7 +91,8 @@ public class LivingEntityMixin {
     // [EdibleItemPower] addEatEffect() -> IsEdible
     @ModifyExpressionValue(method = "eat", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;isEdible()Z"))
     private boolean guaxiorigin$modifyEatEffectsIsEdible(boolean original, @Local(argsOnly = true) ItemStack itemStack) {
-        return original || PowerHolderComponent.hasPower(getSelf(), EdibleItemPower.class, p-> p.doesApply(itemStack));
+        return original
+                || PowerHolderComponent.hasPower(getSelf(), EdibleItemPower.class, p-> p.doesApply(itemStack));
     }
 
     // [EdibleItemPower] addEatEffect() -> getFoodProperties()
@@ -100,7 +100,7 @@ public class LivingEntityMixin {
     private FoodProperties guaxiorigin$customFoodProperties(FoodProperties original, @Local(argsOnly = true) ItemStack itemStack)  {
         return getEdibleItemPower(itemStack)
                 .map(EdibleItemPower::getFoodComponent)
-                .orElse(original != null ? original : FOODPROP_FALLBACK);
+                .orElse(original);
     }
 
     // [EdibleItemPower] customUseDuration
@@ -108,7 +108,7 @@ public class LivingEntityMixin {
     private FoodProperties guaxiorigin$replaceFoodProperties(FoodProperties original) {
         return getEdibleItemPower(this.useItem)
                 .map(EdibleItemPower::getFoodComponent)
-                .orElse(original != null ? original : FOODPROP_FALLBACK);
+                .orElse(original);
     }
 
     @ModifyExpressionValue(method = "shouldTriggerItemUseEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getUseDuration()I"))

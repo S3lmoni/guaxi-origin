@@ -23,7 +23,8 @@ public class ItemMixin {
 
     @ModifyExpressionValue(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;isEdible()Z"))
     private boolean guaxiorigin$customIsEdible(boolean original, @Local(argsOnly = true) Player player, @Local(argsOnly = true) InteractionHand hand) {
-        return original || PowerHolderComponent.hasPower(player, EdibleItemPower.class, p -> p.doesApply(player.getItemInHand(hand)));
+        return original
+                || PowerHolderComponent.hasPower(player, EdibleItemPower.class, p -> p.doesApply(player.getItemInHand(hand)));
     }
 
     @ModifyExpressionValue(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;getFoodProperties()Lnet/minecraft/world/food/FoodProperties;"))
@@ -33,7 +34,7 @@ public class ItemMixin {
                                     .filter(p -> p.doesApply(player.getItemInHand(interactionHand)))
                                     .max(Comparator.comparing(EdibleItemPower::getPriority))
                                     .map(EdibleItemPower::getFoodComponent)
-                                    .orElse(original != null ? original : new FoodProperties.Builder().build());
+                                    .orElse(original);
     }
 
     @ModifyExpressionValue(method = "finishUsingItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;isEdible()Z"))

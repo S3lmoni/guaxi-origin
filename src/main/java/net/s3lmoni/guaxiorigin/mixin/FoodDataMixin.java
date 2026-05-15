@@ -28,12 +28,13 @@ public abstract class FoodDataMixin {
     }
 
     @ModifyExpressionValue(method = "eat(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;isEdible()Z"))
-    private boolean guaxiorigin$isEdible(boolean original, @Local(argsOnly = true) ItemStack itemStack) {
-        return original || PowerHolderComponent.hasPower(guaxiorigin$cachedPlayer, EdibleItemPower.class, power -> power.doesApply(itemStack));
+    private boolean guaxiorigin$customIsEdible(boolean original, @Local(argsOnly = true) ItemStack itemStack) {
+        return original
+                || PowerHolderComponent.hasPower(guaxiorigin$cachedPlayer, EdibleItemPower.class, power -> power.doesApply(itemStack));
     }
 
     @ModifyExpressionValue(method = "eat(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;getFoodProperties()Lnet/minecraft/world/food/FoodProperties;"))
-    private FoodProperties guaxiorigin$customGetFoodProperties(FoodProperties original, @Local(argsOnly = true) ItemStack item) {
+    private FoodProperties guaxiorigin$customFoodProperties(FoodProperties original, @Local(argsOnly = true) ItemStack item) {
         return PowerHolderComponent.getPowers(guaxiorigin$cachedPlayer, EdibleItemPower.class)
                 .stream()
                 .filter(p -> p.doesApply(item))
