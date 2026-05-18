@@ -15,7 +15,7 @@
 
         "guaxi-origin:pehkui/small_size_pehkui"
     ],
-    "icon": "minecraft:purple_dye",
+    "icon": "guaxi-origin:guaxi_icon",
     "order": 1,
     "impact": 2
 }

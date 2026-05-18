@@ -1,6 +1,8 @@
 package net.s3lmoni.guaxiorigin.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.world.InteractionHand;
@@ -15,13 +17,33 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.Comparator;
 
-@Mixin(Item.class)
-public class ItemMixin {
+@Mixin(value = Item.class)
+abstract public class ItemMixin {
 
-    @ModifyExpressionValue(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;isEdible()Z"))
-    private boolean guaxiorigin$customIsEdible(boolean original, @Local(argsOnly = true) Player player, @Local(argsOnly = true) InteractionHand hand) {
-        return original
-                || PowerHolderComponent.hasPower(player, EdibleItemPower.class, p -> p.doesApply(player.getItemInHand(hand)));
+    @ModifyExpressionValue(
+            method = "use",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/item/Item;isEdible()Z"
+            ),
+            require = 0
+    )
+    private boolean guaxiorigin$fabricIsEdible(boolean original, @Local(argsOnly = true) Player player, @Local(argsOnly = true) InteractionHand hand) {
+        return original ||
+                PowerHolderComponent.hasPower(player, EdibleItemPower.class, p -> p.doesApply(player.getItemInHand(hand)));
+    }
+
+    @ModifyExpressionValue(
+            method = "use",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/item/ItemStack;isEdible()Z"
+            ),
+            require = 0
+    )
+    private boolean guaxiorigin$forgeIsEdible(boolean original, @Local(argsOnly = true) Player player, @Local(argsOnly = true) InteractionHand hand) {
+        return original ||
+                PowerHolderComponent.hasPower(player, EdibleItemPower.class, p -> p.doesApply(player.getItemInHand(hand)));
     }
 
     @ModifyExpressionValue(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;getFoodProperties()Lnet/minecraft/world/food/FoodProperties;"))
