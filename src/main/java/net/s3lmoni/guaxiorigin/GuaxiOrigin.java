@@ -3,7 +3,8 @@ package net.s3lmoni.guaxiorigin;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.resources.ResourceLocation;
-import net.s3lmoni.guaxiorigin.power.GuaxiPowers;
+import net.s3lmoni.guaxiorigin.registry.ModPowers;
+import net.s3lmoni.guaxiorigin.registry.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,8 @@ public class GuaxiOrigin implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		GuaxiPowers.register();
-		LOGGER.info("Hello from GuaxiOrigin");
+		ModItems.registerModItems();
+		ModPowers.register();
+		LOGGER.info("Hewwo from GuaxiOrigin");
 	}
 }
